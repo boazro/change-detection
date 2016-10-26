@@ -1,528 +1,612 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=640">
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <link rel="stylesheet" href="stylesheets/core.css" media="screen">
+    <link rel="stylesheet" href="stylesheets/mobile.css" media="handheld, only screen and (max-device-width:640px)">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
 
-    <title>Change Detection Presention</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="css/flipclock.css" rel="stylesheet" >
-    <link href="css/scrolling-nav.css" rel="stylesheet">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-</head>
-
-<!-- The #page-top ID is part of the scrolling feature - the data-spy and data-target are part of the built-in Bootstrap scrollspy function -->
-
-
-<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
-
-    <!-- Navigation -->
-    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-        <div class="container">
-            <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand page-scroll" href="#page-top">Start Here</a>
-            </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav navbar-nav">
-                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
-                    <li class="hidden">
-                        <a class="page-scroll" href="#page-top"></a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#example-pure">ToDo pure</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#rendering">Rendering</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#changes">Projecting Data</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#server-side">Server side render</a>
-                    </li>
-                    
-                    <li>
-                        <a class="page-scroll" href="#manual-side">Manual changes</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#example-backbone">Backbone.js</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#data-binding">Data binding</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#example-ember">Ember</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#dirty-checking">Dirty checking</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#react1">React 1</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#react2">React 2</a>
-                    </li>
-                     <li>
-                        <a class="page-scroll" href="#flux">Flux</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#example-react">React 3</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#immutable">Immutable</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#example-immutable">Redux</a>
-                    </li> 
-                    <li>
-                        <a class="page-scroll" href="#angular2">angular2</a>
-                    </li> 
-                </ul>
-                <img src="images/badge.jpg" class="my-badge">
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
-
-    <!-- Intro Section -->
-    <section id="intro" class="intro-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1>Change Detaction history</h1>
-                    <h2>What causes change?</h2>
-                        
-                </div>
-
-                <div class="row">
-                    <ul>
-                        <li><h3>Events - click, submit, …</h3></li>
-                        <li><h3>XHR - Fetching data from a remote server</h3></li>
-                        <li><h3>Timers - setTimeout(), setInterval()</h3></li>
-                    </ul>
-                </div> 
-
-            </div>
-        </div>
-    </section>
-
-     <!-- here show json of model (pre) and view of toDo list -->
-     <section id="example-pure" class="example">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1>ToDo List in pure Java Script</h1>
-                </div>          
-                <iframe
-                  style="width: 100%; height: 500px"
-                  src="http://jsfiddle.net/boazRosen/hh6efyvd/11/embedded/result,html,js/dark/">
-                </iframe>
-            </div>
-              
-        </div>
-    </section>
-     
-
-    <!-- rendering Section -->
-    <section id="rendering" class="rendering-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1>Rendering - Projecting data from Model to View</h1>
-                </div>
-            </div>
-            <div class="row">
-                <img src="images/onchange_base.svg" class="model-view-img">
-            </div>         
-        </div>
-    </section>
-
-    <!-- change-section -->
-    <section id="changes" class="change-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">                
-                    <h1>Changes</h1>
-                    <img src="images/onchange_change2.svg" class="model-view-img">
-                </div>
-            </div>  
-            <div class="row margin20">                
-                <div class="col-lg-12">
-                    <ul>
-                        <li><h3>user interacts with the UI -> change model -> change view</h3></li>
-                        <li><h3>Service response -> change model -> change view</h3></li>                  
-                                         
-                    </ul>
-                </div>
-            </div>
-            <div class="row" >                
-                <div class="col-lg-12">
-                    <h3><b>Motivation: </b></h3>
-                    <ul>
-                       <li><h3>DOM rebuild is expensive.</h3></li>                                      
-                       <li><h3>Sync model to view - code boilerplate.</h3></li>                                      
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- server-side -->
-    <section id="server-side" class="server-side">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1>Server-Side Rendering: Reset The Universe</h1>
-                    <h5 class="subtitle">"There is no change. The universe is immutable."</h5>
-                </div>
-                <div class="row">
-                    <img src="images/onchange_reload3.svg" class="model-view-img">
-                </div>
-                <div class="col-lg-12">
-                    <ul>
-                       <li><h3>simple client logic.</h3></li>                                      
-                       <li><h3>slow. Why?</h3></li>                                     
-                       <li><h3>full re-randering. don't care about maintaining model-view state</h3></li>                                     
-                    </ul>
-                </div> 
-            </div>
-        </div>
-    </section> 
-
-    <!-- manual Section -->
-    <section id="manual-side" class="manual-side">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1>First-gen JS: Manual Re-rendering</h1>
-                    <h5 class="subtitle">"I have no idea what I should re-render. You figure it out"</h5>
-                </div>
-                <div class="row">
-                    <img src="images/onchange_manual4.svg" class="model-view-img">
-                </div>
-                <div class="col-lg-12">
-                    <ul>
-                       <li><h3>You control synchronization between Model and view.</h3></li>                                      
-                       <li><h3>You control what to re-rander and when.</h3></li>                                     
-                       <li><h3>More complex client logic.</h3></li>                                      
-                       <li><h3>Better performance.</h3></li>
-                       <li><h3>Manually figure out re-rendering when app state changes is <b>Hard</b>.</h3></li>                                      
-                    </ul>
-                </div> 
-            </div>
-        </div>
-    </section>
-
- <!-- backbone -->
-     <section id="example-backbone" class="backbone">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1>Backbone.js 2010</h1>
-                </div>          
-                <iframe
-                  style="width: 100%; height: 500px"
-                  src="http://jsfiddle.net/boazRosen/a4vm3tuj/13/embedded/result,html,js/dark/">
-                </iframe>          
-            </div> 
-        </div>
-    </section>
-
-     <!-- data binding -->
-    <section id="data-binding" class="data-binding">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1>Data Binding</h1>
-                    <h5 class="subtitle">"I know exactly what changed and what should be re-rendered because I control your models and views"</h5>
-                </div>
-                <div class="row">
-                    <img src="images/onchange_ember5.svg" class="model-view-img">
-                </div>
-                <div class="col-lg-12">
-                    <h3><b>Ember.js 2011: </b></h3>
-                    <ul>
-                       <li><h3>Just like Backbone, sends out events from the data model when changes occur.</h3></li>
-                       <li><h3>What's new - binding through listener (update mechanism).</h3></li>
-                       <li><h3>Setting all the bindings up takes a bit of work.</h3></li>
-                       <li><h3>Use special objects that inherit from Ember's APIs.</h3></li>
-                       <li><h3>Use special setter methods. for example - <b>foo.set('x', 42)</b>.</h3></li>
-                    </ul>
-                </div> 
-            </div>
-        </div>
-    </section>
-
-    <!-- ember -->
-     <section id="example-ember" class="ember">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1>Ember.js 2010</h1>
-                </div>          
-                <iframe
-                  style="width: 100%; height: 500px"
-                  src="http://jsfiddle.net/boazRosen/xtf3xu8x/7/embedded/result,html,js/dark/">
-                </iframe>          
-            </div> 
-        </div>
-    </section>
- 
- <!-- Dirty Checking -->
-    <section id="dirty-checking" class="dirty-checking">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1>AngularJS 2009: Dirty Checking</h1>
-                    <h5 class="subtitle">"I have no idea what changed, so I'll just check everything that may need updating"</h5>
-                </div>
-                <div class="row">
-                    <img src="images/onchange_angular_1_6.svg" class="model-view-img">
-                </div>
-                <div class="col-lg-12">               
-                    <ul>
-                       <li><h3>creates a watcher for each of the properties.</h3></li>
-                       <li><h3><span style="color: green">Good</span>: automatically check model changes and update view.</h3></li>
-                       <li><h3><span style="color: red">Bad</span>: check everything all the time!!! more watchers more complex</h3></li> 
-                       <li><h3><span style="color: red">Bad</span>: don't know when digest ends</h3></li>              
-                    </ul>
-                </div> 
-            </div>
-        </div>
-    </section>
-
- <!-- React: Virtual DOM -->
-    <section id="react1" class="react1">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1>Facebook React 2013: Virtual DOM</h1>
-                    <h5 class="subtitle">"I have no idea what changed so I'll just re-render everything and see what's different now"</h5>
-                </div>
-                
-                <div class="col-lg-12">               
-                    <ul>
-                       <li><h3>Similer to server side render. Don't care about maintaining model-view state!</h3></li>
-                       <li><h3>Renders the whole UI from scratch every time there may have been a change somewhere.</h3></li> 
-                       <li><h3>Does not enforce a data model API.</h3></li>
-                       <li><h3>don't know when digest ends</h3></li>         
-                    </ul>
-                </div> 
-
-                <div class="row">
-                    <img src="images/onchange_react_7.svg" class="model-view-img">
-                </div>
-
-                 <div class="col-lg-12">               
-                    <ul>
-                       <li><h3>First rendered into a virtual DOM light-weight, pure JavaScript data structure of plain objects and arrays that represents a real DOM object graph</h3></li>
-                       <li><h3>A separate process then takes that virtual DOM structure and creates the corresponding real DOM elements that are shown on the screen.</h3></li>          
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- React: Change detection -->
-    <section id="react2" class="react2">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1>React: Change Detection</h1>
-                </div>
-                
-                <div class="col-lg-12">               
-                    <ul>
-                       <li><h3>When a change occurs, a new virtual DOM is created from scratch</h3></li>
-                       <li><h3>It then runs a diffing algorithm on the two virtual DOMs, to get the set of changes between them.</h3></li>
-                       <li><h3>Only those changes, are applied to the real DOM!</h3></li>               
-                    </ul>
-                </div> 
-
-                <div class="row">
-                    <img src="images/onchange_react_8.svg" class="model-view-img">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- React: Change detection -->
-    <section id="flux" class="flux">
-        <div class="container">
-            <div class="row">             
-                <h5>* Flux - unidirectional data flow</h5>
-                <h5>* State - used for <b>store</b> the shape of data both initially and upon user interaction.</h5>
-                <h5>* Props - used for passing data to child components.</h5>
-
-                <div class="row" class="model-view-img">
-                    <img src="images/flux-data-flow.png">
-                </div>
-                
-            </div>
-        </div>
-    </section>
-
-    <!-- react examle -->
-     <section id="example-react" class="react3">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1>React</h1>
-                </div> 
-                <iframe
-                  style="width: 100%; height: 500px"
-                  src="http://jsfiddle.net/boazRosen/tsj7nvvq/13/embedded/result,html,js/dark/">
-                </iframe>  
-
-                <h5>** Problem 1 - there's really no way around rendering the whole (virtual) DOM each time</h5>
-                <h5>** Problem 2 - as a limit of 60 re-rendering a secound.</h5>               
-            </div> 
-        </div>
-    </section>
-
-
-     <!-- Immutable Data Structures -->
-    <section id="immutable" class="immutable">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1>Immutable Data Structures</h1>
-                    <h5 class="subtitle">"The simplest/fastest way to check whether an object has changed is to check whether it’s the same object reference or not. (<b>oldObject === newObject</b>)"</h5>
-                </div>
-                
-                
-
-                <div class="row">
-                    <img src="images/onchange_immutable_9.svg" class="model-view-img">
-                </div>
-
-                <div class="col-lg-12">               
-                    <ul>      
-                       <li><h3>Using this pattern: Immutable-js, OM.js, Redux.js, Freezer.js</h3></li>
-                       <li><h3></h3></li>               
-                    </ul>
-                </div> 
-                           
-            </div>
-        </div>
-    </section>
-
-    <!-- immutable examle -->
-     <section id="example-immutable" class="react3">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1>React and Immutable.js example</h1>  
-                </div> 
-                <iframe width="100%" height="500px" src="http://jsfiddle.net/boazRosen/h81eujmk/embedded/js,html,css,result/dark/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>     
-            </div> 
-        </div>
-    </section>
-
-    <!-- angular2: Change detection -->
-    <section id="angular2" class="angular2">
-        <div class="container">
-            <div class="row">             
-               
-                
-                
-            </div>
-        </div>
-    </section>
-
-
-    <footer>
-        <div class="clock"></div>
-    </footer>
-
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-
-    <!-- Scrolling Nav JavaScript -->
-    <script src="js/jquery.easing.min.js"></script>
-    <script src="js/flipclock.min.js"></script>
-    <script src="js/scrolling-nav.js"></script>
-
+    <script type="text/javascript" src="javascripts/modernizr.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="javascripts/headsmart.min.js"></script>
     <script type="text/javascript">
-        
-        $(document).ready(function() {
-            var clock;
+      $(document).ready(function () {
+        $('#main_content').headsmart()
+      })
+    </script>
+    <title>Change-detection by boazro</title>
+  </head>
 
-            var lastHash;
-            var times = {
-                '#page-top': 0,
-                '#example-pure': 200,
-                '#rendering': 300,
-                '#changes': 400,
-                '#server-side': 500,
-                '#manual-side': 200,
-                '#example-backbone': 600,
-                '#data-binding': 700,
-                '#example-ember': 800,
-                '#dirty-checking': 800,
-                '#react1': 800,
-                '#react2': 800,
-                '#example-react': 800,
-                '#immutable': 800,
+  <body>
+    <a id="forkme_banner" href="https://github.com/boazro/change-detection">View on GitHub</a>
+    <div class="shell">
+
+      <header>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <h1>Change-detection</h1>
+            <h2>Compare change detection in javascript frameworks</h2>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+      </header>
+
+      <section id="downloads">
+        <span class="inner">
+          <a href="https://github.com/boazro/change-detection/zipball/master" class="zip"><em>download</em> .ZIP</a><a href="https://github.com/boazro/change-detection/tarball/master" class="tgz"><em>download</em> .TGZ</a>
+        </span>
+      </section>
+
+
+      <span class="banner-fix"></span>
+
+
+      <section id="main_content">
+        <p>&lt;!DOCTYPE html&gt;
+</p>
+
+<p></p>
+    
+    
+    
+    
+    
+
+<pre><code>&lt;title&gt;Change Detection Presention&lt;/title&gt;
+
+&lt;!-- Bootstrap Core CSS --&gt;
+&lt;link href="css/bootstrap.min.css" rel="stylesheet"&gt;
+
+&lt;!-- Custom CSS --&gt;
+&lt;link href="css/flipclock.css" rel="stylesheet" &gt;
+&lt;link href="css/scrolling-nav.css" rel="stylesheet"&gt;
+
+&lt;!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries --&gt;
+&lt;!-- WARNING: Respond.js doesn't work if you view the page via file:// --&gt;
+&lt;!--[if lt IE 9]&gt;
+    &lt;script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"&gt;&lt;/script&gt;
+    &lt;script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"&gt;&lt;/script&gt;
+&lt;![endif]--&gt;
+</code></pre>
+
+<p></p>
+
+
+
+<p></p>
+
+<pre><code>&lt;!-- Navigation --&gt;
+&lt;nav class="navbar navbar-default navbar-fixed-top" role="navigation"&gt;
+    &lt;div class="container"&gt;
+        &lt;div class="navbar-header page-scroll"&gt;
+            &lt;button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"&gt;
+                &lt;span class="sr-only"&gt;Toggle navigation&lt;/span&gt;
+                &lt;span class="icon-bar"&gt;&lt;/span&gt;
+                &lt;span class="icon-bar"&gt;&lt;/span&gt;
+                &lt;span class="icon-bar"&gt;&lt;/span&gt;
+            &lt;/button&gt;
+            &lt;a class="navbar-brand page-scroll" href="#page-top"&gt;Start Here&lt;/a&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Collect the nav links, forms, and other content for toggling --&gt;
+        &lt;div class="collapse navbar-collapse navbar-ex1-collapse"&gt;
+            &lt;ul class="nav navbar-nav"&gt;
+                &lt;!-- Hidden li included to remove active class from about link when scrolled up past about section --&gt;
+                &lt;li class="hidden"&gt;
+                    &lt;a class="page-scroll" href="#page-top"&gt;&lt;/a&gt;
+                &lt;/li&gt;
+                &lt;li&gt;
+                    &lt;a class="page-scroll" href="#example-pure"&gt;ToDo pure&lt;/a&gt;
+                &lt;/li&gt;
+                &lt;li&gt;
+                    &lt;a class="page-scroll" href="#rendering"&gt;Rendering&lt;/a&gt;
+                &lt;/li&gt;
+                &lt;li&gt;
+                    &lt;a class="page-scroll" href="#changes"&gt;Projecting Data&lt;/a&gt;
+                &lt;/li&gt;
+                &lt;li&gt;
+                    &lt;a class="page-scroll" href="#server-side"&gt;Server side render&lt;/a&gt;
+                &lt;/li&gt;
+
+                &lt;li&gt;
+                    &lt;a class="page-scroll" href="#manual-side"&gt;Manual changes&lt;/a&gt;
+                &lt;/li&gt;
+                &lt;li&gt;
+                    &lt;a class="page-scroll" href="#example-backbone"&gt;Backbone.js&lt;/a&gt;
+                &lt;/li&gt;
+                &lt;li&gt;
+                    &lt;a class="page-scroll" href="#data-binding"&gt;Data binding&lt;/a&gt;
+                &lt;/li&gt;
+                &lt;li&gt;
+                    &lt;a class="page-scroll" href="#example-ember"&gt;Ember&lt;/a&gt;
+                &lt;/li&gt;
+                &lt;li&gt;
+                    &lt;a class="page-scroll" href="#dirty-checking"&gt;Dirty checking&lt;/a&gt;
+                &lt;/li&gt;
+                &lt;li&gt;
+                    &lt;a class="page-scroll" href="#react1"&gt;React 1&lt;/a&gt;
+                &lt;/li&gt;
+                &lt;li&gt;
+                    &lt;a class="page-scroll" href="#react2"&gt;React 2&lt;/a&gt;
+                &lt;/li&gt;
+                 &lt;li&gt;
+                    &lt;a class="page-scroll" href="#flux"&gt;Flux&lt;/a&gt;
+                &lt;/li&gt;
+                &lt;li&gt;
+                    &lt;a class="page-scroll" href="#example-react"&gt;React 3&lt;/a&gt;
+                &lt;/li&gt;
+                &lt;li&gt;
+                    &lt;a class="page-scroll" href="#immutable"&gt;Immutable&lt;/a&gt;
+                &lt;/li&gt;
+                &lt;li&gt;
+                    &lt;a class="page-scroll" href="#example-immutable"&gt;Redux&lt;/a&gt;
+                &lt;/li&gt; 
+                &lt;li&gt;
+                    &lt;a class="page-scroll" href="#angular2"&gt;angular2&lt;/a&gt;
+                &lt;/li&gt; 
+            &lt;/ul&gt;
+            &lt;img src="images/badge.jpg" class="my-badge"&gt;
+        &lt;/div&gt;
+        &lt;!-- /.navbar-collapse --&gt;
+    &lt;/div&gt;
+    &lt;!-- /.container --&gt;
+&lt;/nav&gt;
+
+&lt;!-- Intro Section --&gt;
+&lt;section id="intro" class="intro-section"&gt;
+    &lt;div class="container"&gt;
+        &lt;div class="row"&gt;
+            &lt;div class="col-lg-12"&gt;
+                &lt;h1&gt;Change Detaction history&lt;/h1&gt;
+                &lt;h2&gt;What causes change?&lt;/h2&gt;
+
+            &lt;/div&gt;
+
+            &lt;div class="row"&gt;
+                &lt;ul&gt;
+                    &lt;li&gt;&lt;h3&gt;Events - click, submit, …&lt;/h3&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;h3&gt;XHR - Fetching data from a remote server&lt;/h3&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;h3&gt;Timers - setTimeout(), setInterval()&lt;/h3&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt; 
+
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/section&gt;
+
+ &lt;!-- here show json of model (pre) and view of toDo list --&gt;
+ &lt;section id="example-pure" class="example"&gt;
+    &lt;div class="container"&gt;
+        &lt;div class="row"&gt;
+            &lt;div class="col-lg-12"&gt;
+                &lt;h1&gt;ToDo List in pure Java Script&lt;/h1&gt;
+            &lt;/div&gt;          
+            &lt;iframe
+              style="width: 100%; height: 500px"
+              src="http://jsfiddle.net/boazRosen/hh6efyvd/11/embedded/result,html,js/dark/"&gt;
+            &lt;/iframe&gt;
+        &lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/section&gt;
+
+
+&lt;!-- rendering Section --&gt;
+&lt;section id="rendering" class="rendering-section"&gt;
+    &lt;div class="container"&gt;
+        &lt;div class="row"&gt;
+            &lt;div class="col-lg-12"&gt;
+                &lt;h1&gt;Rendering - Projecting data from Model to View&lt;/h1&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="row"&gt;
+            &lt;img src="images/onchange_base.svg" class="model-view-img"&gt;
+        &lt;/div&gt;         
+    &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;!-- change-section --&gt;
+&lt;section id="changes" class="change-section"&gt;
+    &lt;div class="container"&gt;
+        &lt;div class="row"&gt;
+            &lt;div class="col-lg-12"&gt;                
+                &lt;h1&gt;Changes&lt;/h1&gt;
+                &lt;img src="images/onchange_change2.svg" class="model-view-img"&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;  
+        &lt;div class="row margin20"&gt;                
+            &lt;div class="col-lg-12"&gt;
+                &lt;ul&gt;
+                    &lt;li&gt;&lt;h3&gt;user interacts with the UI -&gt; change model -&gt; change view&lt;/h3&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;h3&gt;Service response -&gt; change model -&gt; change view&lt;/h3&gt;&lt;/li&gt;                  
+
+                &lt;/ul&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="row" &gt;                
+            &lt;div class="col-lg-12"&gt;
+                &lt;h3&gt;&lt;b&gt;Motivation: &lt;/b&gt;&lt;/h3&gt;
+                &lt;ul&gt;
+                   &lt;li&gt;&lt;h3&gt;DOM rebuild is expensive.&lt;/h3&gt;&lt;/li&gt;                                      
+                   &lt;li&gt;&lt;h3&gt;Sync model to view - code boilerplate.&lt;/h3&gt;&lt;/li&gt;                                      
+                &lt;/ul&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;!-- server-side --&gt;
+&lt;section id="server-side" class="server-side"&gt;
+    &lt;div class="container"&gt;
+        &lt;div class="row"&gt;
+            &lt;div class="col-lg-12"&gt;
+                &lt;h1&gt;Server-Side Rendering: Reset The Universe&lt;/h1&gt;
+                &lt;h5 class="subtitle"&gt;"There is no change. The universe is immutable."&lt;/h5&gt;
+            &lt;/div&gt;
+            &lt;div class="row"&gt;
+                &lt;img src="images/onchange_reload3.svg" class="model-view-img"&gt;
+            &lt;/div&gt;
+            &lt;div class="col-lg-12"&gt;
+                &lt;ul&gt;
+                   &lt;li&gt;&lt;h3&gt;simple client logic.&lt;/h3&gt;&lt;/li&gt;                                      
+                   &lt;li&gt;&lt;h3&gt;slow. Why?&lt;/h3&gt;&lt;/li&gt;                                     
+                   &lt;li&gt;&lt;h3&gt;full re-randering. don't care about maintaining model-view state&lt;/h3&gt;&lt;/li&gt;                                     
+                &lt;/ul&gt;
+            &lt;/div&gt; 
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/section&gt; 
+
+&lt;!-- manual Section --&gt;
+&lt;section id="manual-side" class="manual-side"&gt;
+    &lt;div class="container"&gt;
+        &lt;div class="row"&gt;
+            &lt;div class="col-lg-12"&gt;
+                &lt;h1&gt;First-gen JS: Manual Re-rendering&lt;/h1&gt;
+                &lt;h5 class="subtitle"&gt;"I have no idea what I should re-render. You figure it out"&lt;/h5&gt;
+            &lt;/div&gt;
+            &lt;div class="row"&gt;
+                &lt;img src="images/onchange_manual4.svg" class="model-view-img"&gt;
+            &lt;/div&gt;
+            &lt;div class="col-lg-12"&gt;
+                &lt;ul&gt;
+                   &lt;li&gt;&lt;h3&gt;You control synchronization between Model and view.&lt;/h3&gt;&lt;/li&gt;                                      
+                   &lt;li&gt;&lt;h3&gt;You control what to re-rander and when.&lt;/h3&gt;&lt;/li&gt;                                     
+                   &lt;li&gt;&lt;h3&gt;More complex client logic.&lt;/h3&gt;&lt;/li&gt;                                      
+                   &lt;li&gt;&lt;h3&gt;Better performance.&lt;/h3&gt;&lt;/li&gt;
+                   &lt;li&gt;&lt;h3&gt;Manually figure out re-rendering when app state changes is &lt;b&gt;Hard&lt;/b&gt;.&lt;/h3&gt;&lt;/li&gt;                                      
+                &lt;/ul&gt;
+            &lt;/div&gt; 
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/section&gt;
+</code></pre>
+
+<p>
+      
+        <div>
+            <div>
+                <div>
+                    <h1>
+<a id="backbonejs-2010" class="anchor" href="#backbonejs-2010" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Backbone.js 2010</h1>
+                </div>
+<br>
+                
+                <br>
+            </div> 
+        </div>
+     </p>
+
+<pre><code> &lt;!-- data binding --&gt;
+&lt;section id="data-binding" class="data-binding"&gt;
+    &lt;div class="container"&gt;
+        &lt;div class="row"&gt;
+            &lt;div class="col-lg-12"&gt;
+                &lt;h1&gt;Data Binding&lt;/h1&gt;
+                &lt;h5 class="subtitle"&gt;"I know exactly what changed and what should be re-rendered because I control your models and views"&lt;/h5&gt;
+            &lt;/div&gt;
+            &lt;div class="row"&gt;
+                &lt;img src="images/onchange_ember5.svg" class="model-view-img"&gt;
+            &lt;/div&gt;
+            &lt;div class="col-lg-12"&gt;
+                &lt;h3&gt;&lt;b&gt;Ember.js 2011: &lt;/b&gt;&lt;/h3&gt;
+                &lt;ul&gt;
+                   &lt;li&gt;&lt;h3&gt;Just like Backbone, sends out events from the data model when changes occur.&lt;/h3&gt;&lt;/li&gt;
+                   &lt;li&gt;&lt;h3&gt;What's new - binding through listener (update mechanism).&lt;/h3&gt;&lt;/li&gt;
+                   &lt;li&gt;&lt;h3&gt;Setting all the bindings up takes a bit of work.&lt;/h3&gt;&lt;/li&gt;
+                   &lt;li&gt;&lt;h3&gt;Use special objects that inherit from Ember's APIs.&lt;/h3&gt;&lt;/li&gt;
+                   &lt;li&gt;&lt;h3&gt;Use special setter methods. for example - &lt;b&gt;foo.set('x', 42)&lt;/b&gt;.&lt;/h3&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt; 
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;!-- ember --&gt;
+ &lt;section id="example-ember" class="ember"&gt;
+    &lt;div class="container"&gt;
+        &lt;div class="row"&gt;
+            &lt;div class="col-lg-12"&gt;
+                &lt;h1&gt;Ember.js 2010&lt;/h1&gt;
+            &lt;/div&gt;          
+            &lt;iframe
+              style="width: 100%; height: 500px"
+              src="http://jsfiddle.net/boazRosen/xtf3xu8x/7/embedded/result,html,js/dark/"&gt;
+            &lt;/iframe&gt;          
+        &lt;/div&gt; 
+    &lt;/div&gt;
+&lt;/section&gt;
+</code></pre>
+
+<p>
+     
+        <div>
+            <div>
+                <div>
+                    <h1>
+<a id="angularjs-2009-dirty-checking" class="anchor" href="#angularjs-2009-dirty-checking" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>AngularJS 2009: Dirty Checking</h1>
+                    <h5>
+<a id="i-have-no-idea-what-changed-so-ill-just-check-everything-that-may-need-updating" class="anchor" href="#i-have-no-idea-what-changed-so-ill-just-check-everything-that-may-need-updating" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>"I have no idea what changed, so I'll just check everything that may need updating"</h5>
+                </div>
+                <div>
+                    <img src="images/onchange_angular_1_6.svg">
+                </div>
+                <div>
+<br>
+                    <ul>
+                       <li><h3>
+<a id="creates-a-watcher-for-each-of-the-properties" class="anchor" href="#creates-a-watcher-for-each-of-the-properties" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>creates a watcher for each of the properties.</h3></li>
+                       <li><h3>
+<a id="good-automatically-check-model-changes-and-update-view" class="anchor" href="#good-automatically-check-model-changes-and-update-view" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Good: automatically check model changes and update view.</h3></li>
+                       <li><h3>
+<a id="bad-check-everything-all-the-time-more-watchers-more-complex" class="anchor" href="#bad-check-everything-all-the-time-more-watchers-more-complex" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Bad: check everything all the time!!! more watchers more complex</h3></li> 
+                       <li><h3>
+<a id="bad-dont-know-when-digest-ends" class="anchor" href="#bad-dont-know-when-digest-ends" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Bad: don't know when digest ends</h3></li>
+<br>
+                    </ul>
+                </div> 
+            </div>
+        </div>
+     </p>
+
+<p>
+     
+        <div>
+            <div>
+                <div>
+                    <h1>
+<a id="facebook-react-2013-virtual-dom" class="anchor" href="#facebook-react-2013-virtual-dom" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Facebook React 2013: Virtual DOM</h1>
+                    <h5>
+<a id="i-have-no-idea-what-changed-so-ill-just-re-render-everything-and-see-whats-different-now" class="anchor" href="#i-have-no-idea-what-changed-so-ill-just-re-render-everything-and-see-whats-different-now" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>"I have no idea what changed so I'll just re-render everything and see what's different now"</h5>
+                </div>
+
+<pre><code>            &lt;div class="col-lg-12"&gt;               
+                &lt;ul&gt;
+                   &lt;li&gt;&lt;h3&gt;Similer to server side render. Don't care about maintaining model-view state!&lt;/h3&gt;&lt;/li&gt;
+                   &lt;li&gt;&lt;h3&gt;Renders the whole UI from scratch every time there may have been a change somewhere.&lt;/h3&gt;&lt;/li&gt; 
+                   &lt;li&gt;&lt;h3&gt;Does not enforce a data model API.&lt;/h3&gt;&lt;/li&gt;
+                   &lt;li&gt;&lt;h3&gt;don't know when digest ends&lt;/h3&gt;&lt;/li&gt;         
+                &lt;/ul&gt;
+            &lt;/div&gt; 
+
+            &lt;div class="row"&gt;
+                &lt;img src="images/onchange_react_7.svg" class="model-view-img"&gt;
+            &lt;/div&gt;
+
+             &lt;div class="col-lg-12"&gt;               
+                &lt;ul&gt;
+                   &lt;li&gt;&lt;h3&gt;First rendered into a virtual DOM light-weight, pure JavaScript data structure of plain objects and arrays that represents a real DOM object graph&lt;/h3&gt;&lt;/li&gt;
+                   &lt;li&gt;&lt;h3&gt;A separate process then takes that virtual DOM structure and creates the corresponding real DOM elements that are shown on the screen.&lt;/h3&gt;&lt;/li&gt;          
+                &lt;/ul&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;!-- React: Change detection --&gt;
+&lt;section id="react2" class="react2"&gt;
+    &lt;div class="container"&gt;
+        &lt;div class="row"&gt;
+            &lt;div class="col-lg-12"&gt;
+                &lt;h1&gt;React: Change Detection&lt;/h1&gt;
+            &lt;/div&gt;
+
+            &lt;div class="col-lg-12"&gt;               
+                &lt;ul&gt;
+                   &lt;li&gt;&lt;h3&gt;When a change occurs, a new virtual DOM is created from scratch&lt;/h3&gt;&lt;/li&gt;
+                   &lt;li&gt;&lt;h3&gt;It then runs a diffing algorithm on the two virtual DOMs, to get the set of changes between them.&lt;/h3&gt;&lt;/li&gt;
+                   &lt;li&gt;&lt;h3&gt;Only those changes, are applied to the real DOM!&lt;/h3&gt;&lt;/li&gt;               
+                &lt;/ul&gt;
+            &lt;/div&gt; 
+
+            &lt;div class="row"&gt;
+                &lt;img src="images/onchange_react_8.svg" class="model-view-img"&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;!-- React: Change detection --&gt;
+&lt;section id="flux" class="flux"&gt;
+    &lt;div class="container"&gt;
+        &lt;div class="row"&gt;             
+            &lt;h5&gt;* Flux - unidirectional data flow&lt;/h5&gt;
+            &lt;h5&gt;* State - used for &lt;b&gt;store&lt;/b&gt; the shape of data both initially and upon user interaction.&lt;/h5&gt;
+            &lt;h5&gt;* Props - used for passing data to child components.&lt;/h5&gt;
+
+            &lt;div class="row" class="model-view-img"&gt;
+                &lt;img src="images/flux-data-flow.png"&gt;
+            &lt;/div&gt;
+
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;!-- react examle --&gt;
+ &lt;section id="example-react" class="react3"&gt;
+    &lt;div class="container"&gt;
+        &lt;div class="row"&gt;
+            &lt;div class="col-lg-12"&gt;
+                &lt;h1&gt;React&lt;/h1&gt;
+            &lt;/div&gt; 
+            &lt;iframe
+              style="width: 100%; height: 500px"
+              src="http://jsfiddle.net/boazRosen/tsj7nvvq/13/embedded/result,html,js/dark/"&gt;
+            &lt;/iframe&gt;  
+
+            &lt;h5&gt;** Problem 1 - there's really no way around rendering the whole (virtual) DOM each time&lt;/h5&gt;
+            &lt;h5&gt;** Problem 2 - as a limit of 60 re-rendering a secound.&lt;/h5&gt;               
+        &lt;/div&gt; 
+    &lt;/div&gt;
+&lt;/section&gt;
+
+
+ &lt;!-- Immutable Data Structures --&gt;
+&lt;section id="immutable" class="immutable"&gt;
+    &lt;div class="container"&gt;
+        &lt;div class="row"&gt;
+            &lt;div class="col-lg-12"&gt;
+                &lt;h1&gt;Immutable Data Structures&lt;/h1&gt;
+                &lt;h5 class="subtitle"&gt;"The simplest/fastest way to check whether an object has changed is to check whether it’s the same object reference or not. (&lt;b&gt;oldObject === newObject&lt;/b&gt;)"&lt;/h5&gt;
+            &lt;/div&gt;
+
+
+
+            &lt;div class="row"&gt;
+                &lt;img src="images/onchange_immutable_9.svg" class="model-view-img"&gt;
+            &lt;/div&gt;
+
+            &lt;div class="col-lg-12"&gt;               
+                &lt;ul&gt;      
+                   &lt;li&gt;&lt;h3&gt;Using this pattern: Immutable-js, OM.js, Redux.js, Freezer.js&lt;/h3&gt;&lt;/li&gt;
+                   &lt;li&gt;&lt;h3&gt;&lt;/h3&gt;&lt;/li&gt;               
+                &lt;/ul&gt;
+            &lt;/div&gt; 
+
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;!-- immutable examle --&gt;
+ &lt;section id="example-immutable" class="react3"&gt;
+    &lt;div class="container"&gt;
+        &lt;div class="row"&gt;
+            &lt;div class="col-lg-12"&gt;
+                &lt;h1&gt;React and Immutable.js example&lt;/h1&gt;  
+            &lt;/div&gt; 
+            &lt;iframe width="100%" height="500px" src="http://jsfiddle.net/boazRosen/h81eujmk/embedded/js,html,css,result/dark/" allowfullscreen="allowfullscreen" frameborder="0"&gt;&lt;/iframe&gt;     
+        &lt;/div&gt; 
+    &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;!-- angular2: Change detection --&gt;
+&lt;section id="angular2" class="angular2"&gt;
+    &lt;div class="container"&gt;
+        &lt;div class="row"&gt;             
+
+
+
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/section&gt;
+
+
+&lt;footer&gt;
+    &lt;div class="clock"&gt;&lt;/div&gt;
+&lt;/footer&gt;
+
+&lt;!-- jQuery --&gt;
+&lt;script src="js/jquery.js"&gt;&lt;/script&gt;
+
+&lt;!-- Bootstrap Core JavaScript --&gt;
+&lt;script src="js/bootstrap.min.js"&gt;&lt;/script&gt;
+
+&lt;!-- Scrolling Nav JavaScript --&gt;
+&lt;script src="js/jquery.easing.min.js"&gt;&lt;/script&gt;
+&lt;script src="js/flipclock.min.js"&gt;&lt;/script&gt;
+&lt;script src="js/scrolling-nav.js"&gt;&lt;/script&gt;
+
+&lt;script type="text/javascript"&gt;
+
+    $(document).ready(function() {
+        var clock;
+
+        var lastHash;
+        var times = {
+            '#page-top': 0,
+            '#example-pure': 200,
+            '#rendering': 300,
+            '#changes': 400,
+            '#server-side': 500,
+            '#manual-side': 200,
+            '#example-backbone': 600,
+            '#data-binding': 700,
+            '#example-ember': 800,
+            '#dirty-checking': 800,
+            '#react1': 800,
+            '#react2': 800,
+            '#example-react': 800,
+            '#immutable': 800,
+        }
+
+
+       $('a.page-scroll').bind('click', function(event) {
+            if(lastHash){
+                console.log(lastHash + ": " + clock.getTime());
+                times[lastHash] = 0 || clock.getTime().time;
             }
-        
 
-           $('a.page-scroll').bind('click', function(event) {
-                if(lastHash){
-                    console.log(lastHash + ": " + clock.getTime());
-                    times[lastHash] = 0 || clock.getTime().time;
-                }
+            var $anchor = $(this);           
+            lastHash = $anchor.attr('href');
 
-                var $anchor = $(this);           
-                lastHash = $anchor.attr('href');
-                 
-                clock = $('.clock').FlipClock(times[lastHash], {
-                    clockFace: 'MinuteCounter',
-                    countdown: true,
-                    callbacks: {
-                        stop: function() {
-                            $('.message').html('The clock has stopped!');
-                        }
+            clock = $('.clock').FlipClock(times[lastHash], {
+                clockFace: 'MinuteCounter',
+                countdown: true,
+                callbacks: {
+                    stop: function() {
+                        $('.message').html('The clock has stopped!');
                     }
-                });
-
-
-             
+                }
             });
 
+
+
         });
-        
-    </script>
 
-    <script>
-</script>
+    });
 
-</body>
+&lt;/script&gt;
 
+&lt;script&gt;
+</code></pre>
+
+<p></p>
+
+<p></p>
+
+<p></p>
+</div>
+</div> </p>
+      </section>
+
+      <footer>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <p>this project by <a href="https://github.com/boazro">boazro</a> can be found on <a href="https://github.com/boazro/change-detection">GitHub</a></p>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+        <p>Generated with <a href="https://pages.github.com">GitHub Pages</a> using Merlot</p>
+        <span class="octocat"></span>
+      </footer>
+
+    </div>
+
+    
+  </body>
 </html>
